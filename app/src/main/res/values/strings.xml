@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">RMJS Vidros</string>
+    <string name="mensagem_login">Faça seu Login</string>
+    <string name="activity_cliente">Clientes</string>
+    <string name="activity_orcamento">Orçamentos</string>
+    <string name="activity_produto">Produtos</string>
+    <string name="activity_config">Configurações</string>
+    <string name="action_buscar">Buscar</string>
+    <string name="action_atualizar">Atualizar</string>
+    <string name="action_adicionar">Adicionar</string>
+    <string name="action_config">Configurações</string>
+    <string name="action_sair">Sair</string>
+    <string name="action_remover">Remover</string>
+</resources>
+
+
