@@ -44,10 +44,7 @@ class TelaInicialActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
-        /**
-         * --TENTEI IMPLEMENTAR O CODIGO ABAIXO PARA A BARRA DE PESQUISA, POREM CAUSA A PARADA DO APP E FECHA--
-         *
-         * (menu?.findItem(R.id.action_buscar)?.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        (menu?.findItem(R.id.action_buscar)?.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(newText: String): Boolean {
                 Toast.makeText(this@TelaInicialActivity, newText, Toast.LENGTH_SHORT).show()
@@ -59,7 +56,7 @@ class TelaInicialActivity : AppCompatActivity() {
                 return false
             }
 
-        })**/
+        })
         return true
     }
 
