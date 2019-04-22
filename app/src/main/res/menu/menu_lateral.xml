@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_clientes"
+            android:icon="@drawable/baseline_person_outline_black_18dp"
+            android:title="Clientes"
+            android:checked="true"/>
+        <item
+                android:id="@+id/nav_fornecedores"
+                android:icon="@drawable/baseline_supervisor_account_black_18dp"
+                android:title="Fornecedores"/>
+        <item
+                android:id="@+id/nav_produtos"
+                android:icon="@drawable/baseline_category_black_18dp"
+                android:title="Produtos"/>
+
+        <item
+                android:id="@+id/nav_config"
+                android:icon="@drawable/ic_configuracoes_black"
+                android:title="Configurações"/>
+
+        <item
+                android:id="@+id/nav_sair"
+                android:icon="@drawable/baseline_highlight_off_black_18dp"
+                android:title="Sair"/>
+    </group>
+</menu>

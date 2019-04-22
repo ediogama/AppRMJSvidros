@@ -3,22 +3,29 @@ package br.com.ope_rmjs_vidros
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ArrayAdapter
-import android.widget.ListView
+import android.widget.TextView
 
 class ClienteActivity : AppCompatActivity() {
-
+    var cliente: Cliente? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cliente)
 
-        var listaClientes = findViewById<ListView>(R.id.lista_clientes)
-        val clientes = listOf("Maria", "Douglas", "Pedro", "Josefina", "Carlos")
-        listaClientes?.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, clientes)
+        if (intent.getSerializableExtra("cliente") is Cliente)
+            cliente = intent.getSerializableExtra("cliente") as Cliente
+
+        var toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        supportActionBar?.title = cliente?.nome
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        var texto = findViewById<TextView>(R.id.nomeCliente)
+        texto.text = cliente?.nome
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

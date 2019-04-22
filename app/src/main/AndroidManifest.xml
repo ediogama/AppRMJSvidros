@@ -9,8 +9,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".OrcamentoFormActivity">
-        </activity>
+
         <activity
                 android:name=".ConfigActivity"
                 android:label="@string/activity_config">
@@ -27,9 +26,13 @@
         </activity>
         <activity
                 android:name=".ClienteActivity"
-                android:label="@string/activity_cliente">
+                android:label="@string/activity_cliente"
+                android:theme="@style/AppTheme.Toolbar"
+                android:parentActivityName=".TelaInicialActivity">
         </activity>
-        <activity android:name=".TelaInicialActivity">
+        <activity
+                android:name=".TelaInicialActivity"
+                android:theme="@style/AppTheme.Toolbar">
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
