@@ -11,6 +11,6 @@ class Cliente : Serializable{
 
 
     override fun toString(): String {
-        return nome
+        return "Cliente $nome"
     }
 }
