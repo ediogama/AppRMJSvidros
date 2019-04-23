@@ -27,7 +27,7 @@ class ClienteAdapter (
 
         }
 
-        override fun getItemCount() = this.clientes.size
+        override fun getItemCount(): Int {return this.clientes.size}
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientesViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_cliente, parent, false)

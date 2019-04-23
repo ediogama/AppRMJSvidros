@@ -16,7 +16,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class TelaInicialActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener{
 
     private val context: Context get() = this
     var recyclerClientes: RecyclerView? = null
@@ -28,6 +28,8 @@ class TelaInicialActivity : AppCompatActivity(), NavigationView.OnNavigationItem
 
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        supportActionBar?.title = "Tela inicial"
 
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
