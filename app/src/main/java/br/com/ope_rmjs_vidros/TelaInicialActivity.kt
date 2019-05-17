@@ -1,12 +1,9 @@
 package br.com.ope_rmjs_vidros
 
-import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.*
 import android.view.Menu
@@ -18,10 +15,6 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener{
 
-    private val context: Context get() = this
-    var recyclerClientes: RecyclerView? = null
-    private var clientes = listOf<Cliente>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_inicial)
@@ -29,34 +22,32 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        supportActionBar?.title = "Tela inicial"
+        val botaoCliente = findViewById<Button>(R.id.botao_clientes)
+        botaoCliente.setOnClickListener { onClickBotaoCliente() }
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        val botaoProduto = findViewById<Button>(R.id.botao_produtos)
+        botaoProduto.setOnClickListener { onClickBotaoProduto() }
+
+        val botaoOrcamento = findViewById<Button>(R.id.botao_orcamento)
+        botaoOrcamento.setOnClickListener { onClickBotaoOrcamento() }
 
         configuraMenuLateral()
 
-        recyclerClientes = findViewById(R.id.recyclerClientes)
-        recyclerClientes?.layoutManager = LinearLayoutManager(context)
-        recyclerClientes?.itemAnimator = DefaultItemAnimator()
-        recyclerClientes?.setHasFixedSize(true)
-
     }
 
-    override fun onResume() {
-        super.onResume()
-        taskClientes()
+    private fun onClickBotaoOrcamento() {
+        val intent = Intent(this, OrcamentoActivity::class.java)
+        startActivity(intent)
     }
 
-    fun taskClientes(){
-        clientes = ClienteService.getClientes(context)
-        recyclerClientes?.adapter = ClienteAdapter(clientes) { OnClickCliente(it) }
+    private fun onClickBotaoProduto() {
+        val intent = Intent(this, ProdutoActivity::class.java)
+        startActivity(intent)
     }
 
-     fun OnClickCliente(cliente: Cliente) {
-         Toast.makeText(context, "Clicou cliente ${cliente.nome}", Toast.LENGTH_SHORT).show()
-         val intent = Intent(context, ClienteActivity::class.java)
-         intent.putExtra("cliente", cliente)
-         startActivity(intent)
+    private fun onClickBotaoCliente() {
+        val intent = Intent(this, ClienteActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="br.com.ope_rmjs_vidros">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-
+        <activity android:name=".FornecedorActivity">
+        </activity>
         <activity
                 android:name=".ConfigActivity"
                 android:label="@string/activity_config">
@@ -27,8 +30,8 @@
         <activity
                 android:name=".ClienteActivity"
                 android:label="@string/activity_cliente"
-                android:theme="@style/AppTheme.Toolbar"
-                android:parentActivityName=".TelaInicialActivity">
+                android:parentActivityName=".TelaInicialActivity"
+                android:theme="@style/AppTheme.Toolbar">
         </activity>
         <activity
                 android:name=".TelaInicialActivity"

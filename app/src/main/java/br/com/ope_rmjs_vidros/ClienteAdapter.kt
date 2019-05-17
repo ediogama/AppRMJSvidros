@@ -14,12 +14,14 @@ class ClienteAdapter (
         class ClientesViewHolder(view: View): RecyclerView.ViewHolder(view) {
             val cardNome: TextView
             val cardEndereco : TextView
+            val cardTelefone : TextView
             val cardCPF : TextView
             var cardView: CardView
 
             init {
                 cardNome = view.findViewById(R.id.cardNome_cliente)
                 cardEndereco = view.findViewById(R.id.cardEndereco_cliente)
+                cardTelefone = view.findViewById(R.id.cardTelefone_cliente)
                 cardCPF = view.findViewById(R.id.cardCPF_cliente)
                 cardView = view.findViewById(R.id.card_clientes)
 
@@ -40,6 +42,7 @@ class ClienteAdapter (
             val cliente = clientes[position]
 
             holder.cardNome.text = cliente.nome
+            holder.cardTelefone.text = cliente.telefone
             holder.cardEndereco.text = cliente.endereco
             holder.cardCPF.text = cliente.cpf
 
