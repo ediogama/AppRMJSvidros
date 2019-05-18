@@ -13,6 +13,8 @@ class OrcamentoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_orcamento)
+        supportActionBar?.title = "Orçamentos"
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     }

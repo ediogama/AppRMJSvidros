@@ -24,6 +24,12 @@
             android:layout_height="wrap_content"/>
 
         <EditText
+                android:id="@+id/form_telefone"
+                android:hint="Telefone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <EditText
             android:id="@+id/form_endereco"
             android:hint="Endereco"
             android:layout_width="match_parent"

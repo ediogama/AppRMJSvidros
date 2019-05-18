@@ -18,26 +18,36 @@
         android:orientation="vertical">
 
         <include layout="@layout/toolbar" />
-
-        <Button
-                android:id="@+id/botao_clientes"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Clientes"
-                android:textSize="20dp"/>
-        <Button
-                android:id="@+id/botao_produtos"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Produtos"
-                android:textSize="20dp"/>
-        <Button
-                android:id="@+id/botao_orcamento"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Orçamentos"
-                android:textSize="20dp"/>
-
+            <Button
+                    android:id="@+id/botao_clientes"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="Clientes"
+                    android:textSize="20dp"/>
+            <Button
+                    android:id="@+id/botao_produtos"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="Produtos"
+                    android:textSize="20dp"/>
+            <Button
+                    android:id="@+id/botao_orcamento"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="Orçamentos"
+                    android:textSize="20dp"/>
+            <Button
+                    android:id="@+id/botao_fornecedor"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="Fornecedores"
+                    android:textSize="20dp"/>
+            <Button
+                    android:id="@+id/botao_pedido"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="Pedidos"
+                    android:textSize="20dp"/>
     </LinearLayout>
 
     <android.support.design.widget.NavigationView

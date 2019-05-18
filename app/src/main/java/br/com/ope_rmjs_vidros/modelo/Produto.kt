@@ -4,11 +4,11 @@ import java.io.Serializable
 
 class Produto : Serializable{
     var id : Long = 0
-    var codigo = ""
+    var fornecedor_id = ""
     var nome = ""
     var preco = ""
 
     override fun toString(): String {
-        return "Produto: $nome Preço: $preco"
+        return "Produto: $nome"
     }
 }

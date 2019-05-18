@@ -22,6 +22,12 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+        val botaoPedido = findViewById<Button>(R.id.botao_pedido)
+        botaoPedido.setOnClickListener { onClickBotaoPedido() }
+
+        val botaoFornecedor = findViewById<Button>(R.id.botao_fornecedor)
+        botaoFornecedor.setOnClickListener { onClickBotaoFornecedor() }
+
         val botaoCliente = findViewById<Button>(R.id.botao_clientes)
         botaoCliente.setOnClickListener { onClickBotaoCliente() }
 
@@ -33,6 +39,16 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
         configuraMenuLateral()
 
+    }
+
+    private fun onClickBotaoPedido() {
+        val intent = Intent(this, PedidoActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun onClickBotaoFornecedor() {
+        val intent = Intent(this, FornecedorActivity::class.java)
+        startActivity(intent)
     }
 
     private fun onClickBotaoOrcamento() {
@@ -110,10 +126,20 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
                 startActivity(intent)
             }
             R.id.nav_fornecedores ->{
-                Toast.makeText(this, "Clicou Fornecedores", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, FornecedorActivity::class.java)
+                startActivity(intent)
             }
             R.id.nav_produtos ->{
-                Toast.makeText(this, "Clicou Produtos", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, ProdutoActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.nav_pedido ->{
+                val intent = Intent(this, PedidoActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.nav_orcamentos ->{
+                val intent = Intent(this, OrcamentoActivity::class.java)
+                startActivity(intent)
             }
             R.id.nav_config -> {
                 val intent = Intent(this, ConfigActivity::class.java)

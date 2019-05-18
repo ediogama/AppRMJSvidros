@@ -8,6 +8,7 @@ import br.com.ope_rmjs_vidros.R
 class ClienteFormHelper {
     var campoNome: EditText? = null
     var campoCPF: EditText? = null
+    var campoTelefone: EditText? = null
     var campoEndereco: EditText? = null
 
     private var cliente: Cliente
@@ -15,12 +16,14 @@ class ClienteFormHelper {
     constructor(activity: ClienteFormActivity) {
         campoNome = activity.findViewById(R.id.form_nome)
         campoCPF = activity.findViewById(R.id.form_cpf)
+        campoTelefone = activity.findViewById(R.id.form_telefone)
         campoEndereco = activity.findViewById(R.id.form_endereco)
         cliente = Cliente()
     }
 
     fun getCliente(): Cliente {
         cliente.nome = campoNome?.text.toString()
+        cliente.telefone = campoTelefone?.text.toString()
         cliente.cpf = campoCPF?.text.toString()
         cliente.endereco = campoEndereco?.text.toString()
 

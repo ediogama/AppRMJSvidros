@@ -2,15 +2,16 @@ package br.com.ope_rmjs_vidros
 
 import android.content.Context
 import android.util.Log
+import br.com.ope_rmjs_vidros.modelo.Fornecedor
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-object ClienteService {
+object FornecedorService {
     val host = "http://ediogama.pythonanywhere.com"
     val TAG = "WS_RMJSVidros"
 
-    fun getClientes (context: Context) : List<Cliente> {
-        val url = "$host/clientes"
+    fun getFornecedores (context: Context) : List<Fornecedor> {
+        val url = "$host/fornecedores"
         val json = HttpHelper.get(url)
 
         Log.d(TAG, json)
@@ -19,8 +20,8 @@ object ClienteService {
 
     }
 
-    fun save(cliente: Cliente): Response {
-        var json = HttpHelper.post("$host/clientes", cliente.toJson())
+    fun save(fornecedor: Fornecedor): Response {
+        var json = HttpHelper.post("$host/fornecedores", fornecedor.toJson())
         return parserJson(json)
 
     }

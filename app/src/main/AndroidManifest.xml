@@ -11,21 +11,40 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".FornecedorActivity">
+        <activity android:name=".FornecedorFormActivity">
+        </activity>
+        <activity
+                android:name=".OrcamentoFormActivity"
+                android:label="Orçamentos"
+                android:theme="@style/AppTheme.Toolbar">
+        </activity>
+        <activity
+                android:name=".PedidoActivity"
+                android:label="Pedidos"
+                android:theme="@style/AppTheme.Toolbar">
+        </activity>
+        <activity
+                android:name=".FornecedorActivity"
+                android:label="Fornecedores"
+                android:theme="@style/AppTheme.Toolbar">
         </activity>
         <activity
                 android:name=".ConfigActivity"
                 android:label="@string/activity_config">
         </activity>
-        <activity android:name=".ClienteFormActivity">
+        <activity
+                android:name=".ClienteFormActivity"
+                android:label="Cliente">
         </activity>
         <activity
                 android:name=".ProdutoActivity"
-                android:label="@string/activity_produto">
+                android:label="@string/activity_produto"
+                android:theme="@style/AppTheme.Toolbar">
         </activity>
         <activity
                 android:name=".OrcamentoActivity"
-                android:label="@string/activity_orcamento">
+                android:label="@string/activity_orcamento"
+                android:theme="@style/AppTheme.Toolbar">
         </activity>
         <activity
                 android:name=".ClienteActivity"
