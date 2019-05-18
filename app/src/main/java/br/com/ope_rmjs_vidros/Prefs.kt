@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 object Prefs {
-    val PREF_ID = "LMS"
+    val PREF_ID = "RMJS"
 
     // retorna o armazém de preferências PREF_ID
     private fun prefs(): SharedPreferences {
@@ -19,5 +19,9 @@ object Prefs {
     fun setString(flag: String, valor: String) =  prefs().edit().putString(flag, valor).apply()
 
     fun getString(flag: String) = prefs().getString(flag, "")
+
+    fun setInt(flag: String, valor: Int) = prefs().edit().putInt(flag, valor).apply()
+
+    fun getInt(flag: String) = prefs().getInt(flag, 0)
 
 }
