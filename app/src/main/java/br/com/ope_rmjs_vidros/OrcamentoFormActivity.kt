@@ -3,6 +3,7 @@ package br.com.ope_rmjs_vidros
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.Toast
 import br.com.ope_rmjs_vidros.helpers.OrcamentoFormHelper
 
@@ -11,7 +12,12 @@ class OrcamentoFormActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_orcamento_form)
-        supportActionBar?.title = "Orçamento"
+
+
+        val botalSalvar = findViewById<Button>(R.id.botao_salvar_orcamento)
+        botalSalvar.setOnClickListener { OnClickSalvar() }
+
+        supportActionBar?.title = "Novo Orçamento"
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }

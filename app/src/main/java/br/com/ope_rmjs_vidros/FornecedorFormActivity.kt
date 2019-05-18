@@ -13,8 +13,11 @@ class FornecedorFormActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fornecedor_form)
 
+        supportActionBar?.title = "Novo Fornecedor"
+
         val botalSalvar = findViewById<Button>(R.id.botao_salvar_fornecedor)
         botalSalvar.setOnClickListener { OnClickSalvar() }
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     }

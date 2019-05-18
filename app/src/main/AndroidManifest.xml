@@ -15,8 +15,7 @@
         </activity>
         <activity
                 android:name=".OrcamentoFormActivity"
-                android:label="Orçamentos"
-                android:theme="@style/AppTheme.Toolbar">
+                android:label="Orçamentos">
         </activity>
         <activity
                 android:name=".PedidoActivity"

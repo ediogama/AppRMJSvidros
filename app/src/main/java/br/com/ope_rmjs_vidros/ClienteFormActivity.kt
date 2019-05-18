@@ -15,6 +15,8 @@ class ClienteFormActivity : AppCompatActivity() {
 
         val botalSalvar = findViewById<Button>(R.id.botao_salvar_cliente)
         botalSalvar.setOnClickListener { OnClickSalvar() }
+
+        supportActionBar?.title = "Novo Cliente"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     }
