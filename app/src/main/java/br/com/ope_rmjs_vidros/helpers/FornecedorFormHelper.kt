@@ -13,7 +13,7 @@ class FornecedorFormHelper {
     private var fornecedor: Fornecedor? = null
 
     constructor(activity: FornecedorFormActivity) {
-        campoNome = activity.findViewById(R.id.form_nome)
+        campoNome = activity.findViewById(R.id.form_nome_fornecedor)
         campoCNPJ = activity.findViewById(R.id.form_cnpj)
         campoEmail = activity.findViewById(R.id.form_email)
         fornecedor = Fornecedor()

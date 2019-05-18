@@ -14,7 +14,7 @@ class ClienteFormHelper {
     private var cliente: Cliente
 
     constructor(activity: ClienteFormActivity) {
-        campoNome = activity.findViewById(R.id.form_nome)
+        campoNome = activity.findViewById(R.id.form_nome_cliente)
         campoCPF = activity.findViewById(R.id.form_cpf)
         campoTelefone = activity.findViewById(R.id.form_telefone)
         campoEndereco = activity.findViewById(R.id.form_endereco)

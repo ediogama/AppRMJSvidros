@@ -3,53 +3,48 @@ package br.com.ope_rmjs_vidros
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
-import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import br.com.ope_rmjs_vidros.helpers.ClienteFormHelper
-import br.com.ope_rmjs_vidros.services.ClienteService
+import br.com.ope_rmjs_vidros.modelo.Fornecedor
+import br.com.ope_rmjs_vidros.services.FornecedorService
 
-class ClienteDadosActivity : AppCompatActivity() {
-    var cliente: Cliente? = null
+class FornecedorDadosActivity : AppCompatActivity() {
+    var fornecedor: Fornecedor? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cliente_dados)
+        setContentView(R.layout.activity_fornecedor_dados)
 
-        if (intent.getSerializableExtra("cliente") is Cliente)
-            cliente = intent.getSerializableExtra("cliente") as Cliente
+        if (intent.getSerializableExtra("fornecedor") is Fornecedor)
+            fornecedor = intent.getSerializableExtra("fornecedor") as Fornecedor
 
 
-        supportActionBar?.title = cliente?.nome
+        supportActionBar?.title = fornecedor?.nome
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        var campoNome = findViewById<EditText>(R.id.form_nome_cliente)
-        var campoTelefone = findViewById<EditText>(R.id.form_telefone)
-        var campoEndereco = findViewById<EditText>(R.id.form_endereco)
-        var campoCPF = findViewById<EditText>(R.id.form_cpf)
+        var campoNome = findViewById<EditText>(R.id.form_nome_fornecedor)
+        var campoEmail = findViewById<EditText>(R.id.form_email)
+        var campoCNPJ = findViewById<EditText>(R.id.form_cnpj)
 
-        campoNome?.setText(cliente?.nome)
-        campoTelefone?.setText(cliente?.telefone)
-        campoEndereco?.setText(cliente?.endereco)
-        campoCPF?.setText(cliente?.cpf)
+        campoNome?.setText(fornecedor?.nome)
+        campoEmail?.setText(fornecedor?.email)
+        campoCNPJ?.setText(fornecedor?.cnpj)
 
-        val botalSalvar = findViewById<Button>(R.id.botao_salvar_cliente)
+        val botalSalvar = findViewById<Button>(R.id.botao_salvar_fornecedor)
         botalSalvar.setOnClickListener { OnClickSalvar() }
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_cliente_dado, menu)
+        menuInflater.inflate(R.menu.menu_fornecedor_dados, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id = item?.itemId
-        if  (id == R.id.clientes_remover) {
+        if  (id == R.id.fornecedor_remover) {
             AlertDialog.Builder(this)
                 .setTitle(R.string.app_name)
                 .setMessage("Deseja excluir a disciplina")
@@ -68,10 +63,10 @@ class ClienteDadosActivity : AppCompatActivity() {
     }
 
     private fun taskExcluir() {
-        if (this.cliente != null && this.cliente is Cliente) {
+        if (this.fornecedor != null && this.fornecedor is Fornecedor) {
 
             Thread {
-                ClienteService.delete(this.cliente as Cliente)
+                FornecedorService.delete(this.fornecedor as Fornecedor)
                 runOnUiThread {
 
                     finish()
@@ -82,15 +77,15 @@ class ClienteDadosActivity : AppCompatActivity() {
 
 
     private fun OnClickSalvar() {
-        taskAtualizar(cliente)
+        taskAtualizar(fornecedor)
 
-        Toast.makeText(this, "Cliente ${cliente} Salvo!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "fornecedor ${fornecedor} Salvo!", Toast.LENGTH_SHORT).show()
         finish()
     }
 
-    private fun taskAtualizar(cliente: Cliente?) {
+    private fun taskAtualizar(fornecedor: Fornecedor?) {
         Thread {
-            ClienteService.save(cliente)
+            FornecedorService.save(fornecedor!!)
             runOnUiThread {finish()}
         }.start()
     }

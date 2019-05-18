@@ -20,6 +20,8 @@ class FornecedorActivity : AppCompatActivity() {
     var recyclerFornecedores: RecyclerView? = null
     private var fornecedores = listOf<Fornecedor>()
     var fornecedor: Fornecedor? = null
+    private var REQUEST_CADASTRO = 1
+    private var REQUEST_REMOVE= 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,9 +56,9 @@ class FornecedorActivity : AppCompatActivity() {
 
     fun OnClickFornecedor(fornecedor: Fornecedor) {
         Toast.makeText(context, "Clicou fornecedor ${fornecedor.nome}", Toast.LENGTH_SHORT).show()
-        val intent = Intent(context, FornecedorActivity::class.java)
+        val intent = Intent(context, FornecedorDadosActivity::class.java)
         intent.putExtra("fornecedor", fornecedor)
-        startActivity(intent)
+        startActivityForResult(intent, REQUEST_REMOVE)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -69,12 +71,18 @@ class FornecedorActivity : AppCompatActivity() {
         when(id){
             R.id.fornecedores_adicionar -> {
                 val intent = Intent(this, FornecedorFormActivity::class.java)
-                startActivity(intent)
+                startActivityForResult(intent, REQUEST_CADASTRO)
             }
             android.R.id.home ->{
                 finish()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE ) {
+            taskFornecedores()
+        }
     }
 }

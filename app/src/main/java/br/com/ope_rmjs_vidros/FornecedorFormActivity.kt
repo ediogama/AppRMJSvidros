@@ -6,6 +6,9 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import br.com.ope_rmjs_vidros.helpers.FornecedorFormHelper
+import br.com.ope_rmjs_vidros.modelo.Fornecedor
+import br.com.ope_rmjs_vidros.services.ClienteService
+import br.com.ope_rmjs_vidros.services.FornecedorService
 
 class FornecedorFormActivity : AppCompatActivity() {
 
@@ -33,8 +36,16 @@ class FornecedorFormActivity : AppCompatActivity() {
     private fun OnClickSalvar() {
         var helper = FornecedorFormHelper(this)
         val fornecedor = helper?.getFornecedor()
+        taskAdicionar(fornecedor!!)
 
         Toast.makeText(this, "fornecedor ${fornecedor} Salvo!", Toast.LENGTH_SHORT).show()
         finish()
+    }
+
+    private fun taskAdicionar(fornecedor: Fornecedor) {
+        Thread {
+            FornecedorService.save(fornecedor)
+            runOnUiThread {finish()}
+        }.start()
     }
 }

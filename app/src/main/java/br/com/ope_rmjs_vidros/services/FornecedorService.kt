@@ -2,6 +2,7 @@ package br.com.ope_rmjs_vidros.services
 
 import android.content.Context
 import android.util.Log
+import br.com.ope_rmjs_vidros.Cliente
 import br.com.ope_rmjs_vidros.helpers.HttpHelper
 import br.com.ope_rmjs_vidros.Response
 import br.com.ope_rmjs_vidros.modelo.Fornecedor
@@ -29,6 +30,14 @@ object FornecedorService {
         )
         return parserJson(json)
 
+    }
+
+    fun delete(fornecedor: Fornecedor): Response {
+
+        val url = "${FornecedorService.host}/fornecedores/${fornecedor.id}"
+        val json = HttpHelper.delete(url)
+
+        return FornecedorService.parserJson(json)
     }
 
     inline fun <reified T> parserJson(json: String) : T {
