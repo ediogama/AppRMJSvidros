@@ -33,7 +33,7 @@ object ClienteService {
 
     fun delete(cliente: Cliente): Response {
 
-        val url = "$host/cliente/${cliente.id}"
+        val url = "$host/clientes/${cliente.id}"
         val json = HttpHelper.delete(url)
 
         return parserJson(json)
