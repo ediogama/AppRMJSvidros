@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -11,6 +12,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".ClienteDadosActivity">
+        </activity>
         <activity android:name=".ProdutoFormActivity">
         </activity>
         <activity android:name=".FornecedorFormActivity">
@@ -19,11 +22,7 @@
                 android:name=".OrcamentoFormActivity"
                 android:label="Orçamentos">
         </activity>
-        <activity
-                android:name=".PedidoActivity"
-                android:label="Pedidos"
-                android:theme="@style/AppTheme.Toolbar">
-        </activity>
+
         <activity
                 android:name=".FornecedorActivity"
                 android:label="Fornecedores"

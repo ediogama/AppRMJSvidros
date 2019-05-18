@@ -22,13 +22,21 @@ object ClienteService {
 
     }
 
-    fun save(cliente: Cliente): Response {
+    fun save(cliente: Cliente?): Response {
         var json = HttpHelper.post(
             "$host/clientes",
-            cliente.toJson()
+            cliente!!.toJson()
         )
         return parserJson(json)
 
+    }
+
+    fun delete(cliente: Cliente): Response {
+
+        val url = "$host/cliente/${cliente.id}"
+        val json = HttpHelper.delete(url)
+
+        return parserJson(json)
     }
 
     inline fun <reified T> parserJson(json: String) : T {

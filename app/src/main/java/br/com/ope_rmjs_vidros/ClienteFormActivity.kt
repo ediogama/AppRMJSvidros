@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import br.com.ope_rmjs_vidros.helpers.ClienteFormHelper
+import br.com.ope_rmjs_vidros.services.ClienteService
 
 class ClienteFormActivity : AppCompatActivity() {
 
@@ -32,8 +33,16 @@ class ClienteFormActivity : AppCompatActivity() {
     private fun OnClickSalvar() {
         var helper = ClienteFormHelper(this)
         val cliente = helper?.getCliente()
+        taskAdicionar(cliente)
 
         Toast.makeText(this, "Cliente ${cliente} Salvo!", Toast.LENGTH_SHORT).show()
         finish()
+    }
+
+    private fun taskAdicionar(cliente: Cliente) {
+        Thread {
+            ClienteService.save(cliente)
+            runOnUiThread {finish()}
+        }.start()
     }
 }

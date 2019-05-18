@@ -19,12 +19,12 @@ class ClienteActivity : AppCompatActivity() {
     var recyclerClientes: RecyclerView? = null
     private var clientes = listOf<Cliente>()
     var cliente: Cliente? = null
+    private var REQUEST_CADASTRO = 1
+    private var REQUEST_REMOVE= 2
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cliente)
-
-        if (intent.getSerializableExtra("cliente") is Cliente)
-            cliente = intent.getSerializableExtra("cliente") as Cliente
 
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -55,9 +55,9 @@ class ClienteActivity : AppCompatActivity() {
 
     fun OnClickCliente(cliente: Cliente) {
         Toast.makeText(context, "Clicou cliente ${cliente.nome}", Toast.LENGTH_SHORT).show()
-        val intent = Intent(context, ClienteActivity::class.java)
+        val intent = Intent(context, ClienteDadosActivity::class.java)
         intent.putExtra("cliente", cliente)
-        startActivity(intent)
+        startActivityForResult(intent, REQUEST_REMOVE)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -70,12 +70,19 @@ class ClienteActivity : AppCompatActivity() {
         when(id){
             R.id.clientes_adicionar -> {
                 val intent = Intent(this, ClienteFormActivity::class.java)
-                startActivity(intent)
+                startActivityForResult(intent, REQUEST_CADASTRO)
             }
             android.R.id.home ->{
                 finish()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE ) {
+            // atualizar lista de clientes
+            taskClientes()
+        }
     }
 }
