@@ -2,8 +2,8 @@ package br.com.ope_rmjs_vidros.services
 
 import android.content.Context
 import android.util.Log
-import br.com.ope_rmjs_vidros.helpers.HttpHelper
 import br.com.ope_rmjs_vidros.Produto
+import br.com.ope_rmjs_vidros.helpers.HttpHelper
 import br.com.ope_rmjs_vidros.Response
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -29,6 +29,14 @@ object ProdutoService {
         )
         return parserJson(json)
 
+    }
+
+    fun delete(produto: Produto): Response {
+
+        val url = "${ProdutoService.host}/produtos/${produto.id}"
+        val json = HttpHelper.delete(url)
+
+        return ProdutoService.parserJson(json)
     }
 
     inline fun <reified T> parserJson(json: String) : T {

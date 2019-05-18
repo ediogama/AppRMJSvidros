@@ -19,6 +19,8 @@ class ProdutoActivity : AppCompatActivity() {
     var recyclerProdutos: RecyclerView? = null
     private var produtos = listOf<Produto>()
     var produto: Produto? = null
+    private var REQUEST_CADASTRO = 1
+    private var REQUEST_REMOVE= 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,9 +54,9 @@ class ProdutoActivity : AppCompatActivity() {
 
     fun OnClickProduto(produto: Produto) {
         Toast.makeText(context, "Clicou produto ${produto.nome}", Toast.LENGTH_SHORT).show()
-        val intent = Intent(context, ProdutoActivity::class.java)
+        val intent = Intent(context, ProdutoDadosActivity::class.java)
         intent.putExtra("produto", produto)
-        startActivity(intent)
+        startActivityForResult(intent, REQUEST_REMOVE)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -67,12 +69,18 @@ class ProdutoActivity : AppCompatActivity() {
         when(id){
             R.id.produto_adicionar -> {
                 val intent = Intent(this, ProdutoFormActivity::class.java)
-                startActivity(intent)
+                startActivityForResult(intent, REQUEST_CADASTRO)
             }
             android.R.id.home ->{
                 finish()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE ) {
+            taskProdutos()
+        }
     }
 }
