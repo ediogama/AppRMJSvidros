@@ -12,20 +12,20 @@
             android:orientation="vertical">
 
         <EditText
-                android:id="@+id/form_codigo_do_produto"
-                android:hint="Código do Produto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        <EditText
                 android:id="@+id/form_cpf_do_cliente"
                 android:hint="CPF do Cliente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
         <EditText
-                android:id="@+id/form_quantidade"
-                android:hint="Quantidade"
+                android:id="@+id/form_data"
+                android:hint="Data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <EditText
+                android:id="@+id/form_preco"
+                android:hint="Preço"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

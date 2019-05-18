@@ -1,5 +1,6 @@
 package br.com.ope_rmjs_vidros
 
+import com.google.gson.GsonBuilder
 import java.io.Serializable
 
 class Orcamento : Serializable{
@@ -8,4 +9,12 @@ class Orcamento : Serializable{
     var cpf_do_cliente = ""
     var data = ""
 
+    override fun toString(): String {
+        return "Orcamento $preco"
+    }
+
+    fun toJson(): String {
+        return GsonBuilder().create().toJson(this)
+
+    }
 }
