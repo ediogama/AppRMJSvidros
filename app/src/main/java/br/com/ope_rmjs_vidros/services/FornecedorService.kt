@@ -1,7 +1,9 @@
-package br.com.ope_rmjs_vidros
+package br.com.ope_rmjs_vidros.services
 
 import android.content.Context
 import android.util.Log
+import br.com.ope_rmjs_vidros.helpers.HttpHelper
+import br.com.ope_rmjs_vidros.Response
 import br.com.ope_rmjs_vidros.modelo.Fornecedor
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -21,7 +23,10 @@ object FornecedorService {
     }
 
     fun save(fornecedor: Fornecedor): Response {
-        var json = HttpHelper.post("$host/fornecedores", fornecedor.toJson())
+        var json = HttpHelper.post(
+            "$host/fornecedores",
+            fornecedor.toJson()
+        )
         return parserJson(json)
 
     }

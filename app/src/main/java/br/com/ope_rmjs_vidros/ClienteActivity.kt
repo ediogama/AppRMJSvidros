@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import br.com.ope_rmjs_vidros.adapters.ClienteAdapter
+import br.com.ope_rmjs_vidros.services.ClienteService
 
 class ClienteActivity : AppCompatActivity() {
     private val context: Context get() = this
@@ -45,7 +47,9 @@ class ClienteActivity : AppCompatActivity() {
     fun taskClientes(){
         Thread {
             clientes = ClienteService.getClientes(context)
-            runOnUiThread {recyclerClientes?.adapter = ClienteAdapter(clientes) { OnClickCliente(it) }}
+            runOnUiThread {recyclerClientes?.adapter =
+                ClienteAdapter(clientes) { OnClickCliente(it) }
+            }
         }.start()
     }
 

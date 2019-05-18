@@ -10,9 +10,9 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ArrayAdapter
-import android.widget.ListView
 import android.widget.Toast
+import br.com.ope_rmjs_vidros.adapters.OrcamentoAdapter
+import br.com.ope_rmjs_vidros.services.OrcamentoService
 
 class OrcamentoActivity : AppCompatActivity() {
 
@@ -46,7 +46,9 @@ class OrcamentoActivity : AppCompatActivity() {
     fun taskOrcamentos(){
         Thread {
             orcamentos = OrcamentoService.getOrcamentos(context)
-            runOnUiThread {recyclerOrcamentos?.adapter = OrcamentoAdapter(orcamentos) { OnClickOrcamento(it) }}
+            runOnUiThread {recyclerOrcamentos?.adapter =
+                OrcamentoAdapter(orcamentos) { OnClickOrcamento(it) }
+            }
         }.start()
     }
 

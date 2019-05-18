@@ -11,7 +11,9 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import br.com.ope_rmjs_vidros.adapters.FornecedorAdapter
 import br.com.ope_rmjs_vidros.modelo.Fornecedor
+import br.com.ope_rmjs_vidros.services.FornecedorService
 
 class FornecedorActivity : AppCompatActivity() {
     private val context: Context get() = this
@@ -44,7 +46,9 @@ class FornecedorActivity : AppCompatActivity() {
     fun taskFornecedores(){
         Thread {
             fornecedores = FornecedorService.getFornecedores(context)
-            runOnUiThread {recyclerFornecedores?.adapter = FornecedorAdapter(fornecedores) { OnClickFornecedor(it) }}
+            runOnUiThread {recyclerFornecedores?.adapter =
+                FornecedorAdapter(fornecedores) { OnClickFornecedor(it) }
+            }
         }.start()
     }
 

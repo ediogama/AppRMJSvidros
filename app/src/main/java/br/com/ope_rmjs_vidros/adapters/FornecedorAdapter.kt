@@ -1,4 +1,4 @@
-package br.com.ope_rmjs_vidros
+package br.com.ope_rmjs_vidros.adapters
 
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import br.com.ope_rmjs_vidros.R
 import br.com.ope_rmjs_vidros.modelo.Fornecedor
 
 class FornecedorAdapter (
