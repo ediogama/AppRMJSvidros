@@ -20,6 +20,8 @@ class OrcamentoActivity : AppCompatActivity() {
     var recyclerOrcamentos: RecyclerView? = null
     private var orcamentos = listOf<Orcamento>()
     var orcamento: Orcamento? = null
+    private var REQUEST_CADASTRO = 1
+    private var REQUEST_REMOVE= 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,9 +56,9 @@ class OrcamentoActivity : AppCompatActivity() {
 
     fun OnClickOrcamento(orcamento: Orcamento) {
         Toast.makeText(context, "Clicou orcamento ${orcamento.preco}", Toast.LENGTH_SHORT).show()
-        val intent = Intent(context, OrcamentoActivity::class.java)
+        val intent = Intent(context, OrcamentoDadosActivity::class.java)
         intent.putExtra("orcamento", orcamento)
-        startActivity(intent)
+        startActivityForResult(intent, REQUEST_REMOVE)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -69,13 +71,20 @@ class OrcamentoActivity : AppCompatActivity() {
         when(id){
             R.id.orcamento_adicionar -> {
                 val intent = Intent(this, OrcamentoFormActivity::class.java)
-                startActivity(intent)
+                startActivityForResult(intent, REQUEST_CADASTRO)
             }
             android.R.id.home ->{
                 finish()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE ) {
+            // atualizar lista de clientes
+            taskOrcamentos()
+        }
     }
 
 }

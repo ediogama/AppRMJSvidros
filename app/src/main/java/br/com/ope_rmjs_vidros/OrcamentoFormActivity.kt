@@ -6,6 +6,8 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import br.com.ope_rmjs_vidros.helpers.OrcamentoFormHelper
+import br.com.ope_rmjs_vidros.services.ClienteService
+import br.com.ope_rmjs_vidros.services.OrcamentoService
 
 class OrcamentoFormActivity : AppCompatActivity() {
 
@@ -33,8 +35,15 @@ class OrcamentoFormActivity : AppCompatActivity() {
     private fun OnClickSalvar() {
         var helper = OrcamentoFormHelper(this)
         val orcamento = helper?.getOrcamento()
-
+        taskAdicionar(orcamento)
         Toast.makeText(this, "orcamento ${orcamento} Salvo!", Toast.LENGTH_SHORT).show()
         finish()
+    }
+
+    private fun taskAdicionar(orcamento: Orcamento) {
+        Thread {
+            OrcamentoService.save(orcamento)
+            runOnUiThread {finish()}
+        }.start()
     }
 }

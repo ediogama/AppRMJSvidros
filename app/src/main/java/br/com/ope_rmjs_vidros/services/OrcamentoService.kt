@@ -5,6 +5,7 @@ import android.util.Log
 import br.com.ope_rmjs_vidros.helpers.HttpHelper
 import br.com.ope_rmjs_vidros.Orcamento
 import br.com.ope_rmjs_vidros.Response
+import br.com.ope_rmjs_vidros.modelo.Fornecedor
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -29,6 +30,14 @@ object OrcamentoService {
         )
         return parserJson(json)
 
+    }
+
+    fun delete(orcamento: Orcamento): Response {
+
+        val url = "${OrcamentoService.host}/orcamentos/${orcamento.id}"
+        val json = HttpHelper.delete(url)
+
+        return OrcamentoService.parserJson(json)
     }
 
     inline fun <reified T> parserJson(json: String) : T {
