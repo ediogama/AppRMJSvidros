@@ -1,5 +1,6 @@
 package br.com.ope_rmjs_vidros
 
+import com.google.gson.GsonBuilder
 import java.io.Serializable
 
 class Produto : Serializable{
@@ -10,5 +11,10 @@ class Produto : Serializable{
 
     override fun toString(): String {
         return "Produto: $nome"
+    }
+
+    fun toJson(): String {
+        return GsonBuilder().create().toJson(this)
+
     }
 }

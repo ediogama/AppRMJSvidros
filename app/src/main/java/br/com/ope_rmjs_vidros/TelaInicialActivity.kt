@@ -22,9 +22,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val botaoPedido = findViewById<Button>(R.id.botao_pedido)
-        botaoPedido.setOnClickListener { onClickBotaoPedido() }
-
         val botaoFornecedor = findViewById<Button>(R.id.botao_fornecedor)
         botaoFornecedor.setOnClickListener { onClickBotaoFornecedor() }
 
@@ -39,11 +36,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
         configuraMenuLateral()
 
-    }
-
-    private fun onClickBotaoPedido() {
-        val intent = Intent(this, PedidoActivity::class.java)
-        startActivity(intent)
     }
 
     private fun onClickBotaoFornecedor() {
@@ -131,10 +123,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             }
             R.id.nav_produtos ->{
                 val intent = Intent(this, ProdutoActivity::class.java)
-                startActivity(intent)
-            }
-            R.id.nav_pedido ->{
-                val intent = Intent(this, PedidoActivity::class.java)
                 startActivity(intent)
             }
             R.id.nav_orcamentos ->{
