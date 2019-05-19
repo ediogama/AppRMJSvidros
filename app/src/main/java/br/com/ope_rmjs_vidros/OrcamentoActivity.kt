@@ -12,6 +12,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import br.com.ope_rmjs_vidros.adapters.OrcamentoAdapter
+import br.com.ope_rmjs_vidros.modelo.Orcamento
 import br.com.ope_rmjs_vidros.services.OrcamentoService
 
 class OrcamentoActivity : AppCompatActivity() {

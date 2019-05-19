@@ -1,9 +1,9 @@
 package br.com.ope_rmjs_vidros.helpers
 
 import android.widget.EditText
-import br.com.ope_rmjs_vidros.Orcamento
 import br.com.ope_rmjs_vidros.OrcamentoFormActivity
 import br.com.ope_rmjs_vidros.R
+import br.com.ope_rmjs_vidros.modelo.Orcamento
 
 class OrcamentoFormHelper {
     var campoPreco: EditText? = null

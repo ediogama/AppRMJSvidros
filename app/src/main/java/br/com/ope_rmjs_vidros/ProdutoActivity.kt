@@ -12,6 +12,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import br.com.ope_rmjs_vidros.adapters.ProdutoAdapter
+import br.com.ope_rmjs_vidros.modelo.Produto
 import br.com.ope_rmjs_vidros.services.ProdutoService
 
 class ProdutoActivity : AppCompatActivity() {

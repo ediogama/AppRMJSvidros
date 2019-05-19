@@ -2,25 +2,38 @@ package br.com.ope_rmjs_vidros.services
 
 import android.content.Context
 import android.util.Log
+import br.com.ope_rmjs_vidros.AndroidUtils
 import br.com.ope_rmjs_vidros.helpers.HttpHelper
-import br.com.ope_rmjs_vidros.Orcamento
 import br.com.ope_rmjs_vidros.Response
-import br.com.ope_rmjs_vidros.modelo.Fornecedor
+import br.com.ope_rmjs_vidros.dao.DatabaseManager
+import br.com.ope_rmjs_vidros.modelo.Orcamento
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 object OrcamentoService {
     val host = "http://ediogama.pythonanywhere.com"
     val TAG = "WS_RMJSVidros"
+    val dao = DatabaseManager.getOrcamentoDAO()
 
     fun getOrcamentos (context: Context) : List<Orcamento> {
-        val url = "$host/orcamentos"
-        val json = HttpHelper.get(url)
+        if (AndroidUtils.isInternetDisponivel(context)) {
+            val url = "$host/orcamentos"
+            val json = HttpHelper.get(url)
+            val orcamentos: List<Orcamento> = parserJson(json)
 
-        Log.d(TAG, json)
+            for (o in orcamentos) {
+                if (dao.getById(o.id) == null) {
+                    dao.insert(o)
+                }
+            }
 
-        return parserJson(json)
+            Log.d(TAG, json)
 
+            return orcamentos
+        }
+        else {
+            return dao.findAll()
+        }
     }
 
     fun save(orcamento: Orcamento): Response {

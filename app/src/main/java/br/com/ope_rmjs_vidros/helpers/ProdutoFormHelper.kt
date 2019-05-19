@@ -1,9 +1,9 @@
 package br.com.ope_rmjs_vidros.helpers
 
 import android.widget.EditText
-import br.com.ope_rmjs_vidros.Produto
 import br.com.ope_rmjs_vidros.ProdutoFormActivity
 import br.com.ope_rmjs_vidros.R
+import br.com.ope_rmjs_vidros.modelo.Produto
 
 class ProdutoFormHelper {
     var campoNome: EditText? = null

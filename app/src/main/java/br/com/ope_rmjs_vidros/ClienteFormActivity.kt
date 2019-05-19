@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import br.com.ope_rmjs_vidros.helpers.ClienteFormHelper
+import br.com.ope_rmjs_vidros.modelo.Cliente
 import br.com.ope_rmjs_vidros.services.ClienteService
 
 class ClienteFormActivity : AppCompatActivity() {

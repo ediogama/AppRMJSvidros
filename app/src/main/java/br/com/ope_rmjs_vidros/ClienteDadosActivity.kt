@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import br.com.ope_rmjs_vidros.helpers.ClienteFormHelper
+import br.com.ope_rmjs_vidros.modelo.Cliente
 import br.com.ope_rmjs_vidros.services.ClienteService
 
 class ClienteDadosActivity : AppCompatActivity() {
@@ -82,13 +83,13 @@ class ClienteDadosActivity : AppCompatActivity() {
 
 
     private fun OnClickSalvar() {
-        taskAtualizar(cliente)
+        taskAtualizar(cliente!!)
 
         Toast.makeText(this, "Cliente ${cliente} Salvo!", Toast.LENGTH_SHORT).show()
         finish()
     }
 
-    private fun taskAtualizar(cliente: Cliente?) {
+    private fun taskAtualizar(cliente: Cliente) {
         Thread {
             ClienteService.save(cliente)
             runOnUiThread {finish()}

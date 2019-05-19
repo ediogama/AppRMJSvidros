@@ -2,24 +2,38 @@ package br.com.ope_rmjs_vidros.services
 
 import android.content.Context
 import android.util.Log
-import br.com.ope_rmjs_vidros.Produto
+import br.com.ope_rmjs_vidros.AndroidUtils
 import br.com.ope_rmjs_vidros.helpers.HttpHelper
 import br.com.ope_rmjs_vidros.Response
+import br.com.ope_rmjs_vidros.dao.DatabaseManager
+import br.com.ope_rmjs_vidros.modelo.Produto
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 object ProdutoService {
     val host = "http://ediogama.pythonanywhere.com"
     val TAG = "WS_RMJSVidros"
+    val dao = DatabaseManager.getProdutoDAO()
 
     fun getProdutos (context: Context) : List<Produto> {
-        val url = "$host/produtos"
-        val json = HttpHelper.get(url)
+        if (AndroidUtils.isInternetDisponivel(context)) {
+            val url = "$host/produtos"
+            val json = HttpHelper.get(url)
+            val produtos: List<Produto> = parserJson(json)
 
-        Log.d(TAG, json)
+            for (p in produtos) {
+                if (dao.getById(p.id) == null) {
+                    dao.insert(p)
+                }
+            }
 
-        return parserJson(json)
+            Log.d(TAG, json)
 
+            return produtos
+        }
+        else {
+            return dao.findAll()
+        }
     }
 
     fun save(produto: Produto): Response {

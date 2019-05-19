@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import br.com.ope_rmjs_vidros.Produto
 import br.com.ope_rmjs_vidros.R
+import br.com.ope_rmjs_vidros.modelo.Produto
 
 class ProdutoAdapter (
     val produtos: List<Produto>,

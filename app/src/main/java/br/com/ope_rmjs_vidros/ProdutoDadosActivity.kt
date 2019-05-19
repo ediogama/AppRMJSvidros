@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import br.com.ope_rmjs_vidros.modelo.Produto
 import br.com.ope_rmjs_vidros.services.ProdutoService
 
 class ProdutoDadosActivity : AppCompatActivity() {
