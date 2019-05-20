@@ -48,10 +48,17 @@ class ClienteActivity : AppCompatActivity() {
     fun taskClientes(){
         Thread {
             clientes = ClienteService.getClientes(context)
-            runOnUiThread {recyclerClientes?.adapter =
-                ClienteAdapter(clientes) { OnClickCliente(it) }
+            runOnUiThread {
+                recyclerClientes?.adapter = ClienteAdapter(clientes) { OnClickCliente(it) }
+                enviaNotificacao(this.clientes.get(0))
             }
         }.start()
+    }
+
+    fun enviaNotificacao(cliente: Cliente){
+        val intent = Intent(this, ClienteDadosActivity::class.java)
+        intent.putExtra("cliente", cliente)
+        NotificationUtil.create(1, intent, "Nova Notificação", "Voce tem uma nova notificacao")
     }
 
     fun OnClickCliente(cliente: Cliente) {

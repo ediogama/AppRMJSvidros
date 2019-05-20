@@ -5,7 +5,7 @@ import android.util.Log
 
 open class DebugActivity : AppCompatActivity() {
 
-    private val TAG = "LMSApp"
+    private val TAG = "RMJSVidros"
     private val className: String
         get() {
             val s = javaClass.name
